@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RSMS-Student Management</title>
+        <link rel="shortcut icon" href="images/Logo.png" type="image/x-icon">
+        <!-- Bootstrap css -->
+        <link rel="stylesheet" href="bootstrap-5.2.3/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+        <!-- Bootstrap js-->
+        <script src="bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+        <!-- Fontawesome css -->
+        <link rel="stylesheet" href="fontawesome-free-6.4.2/css/all.css">
+
+        <!-- student css -->
+        <link rel="stylesheet" href="style/studentStyle.css">
+        <!-- login css -->
+        <link rel="stylesheet" href="style/loginStyle.css">
+        <!-- common css -->
+        <link rel="stylesheet" href="style/commonStyle.css">
+
+        <!-- link common script js file -->
+        <script src="script/commonScript.js"></script>
+
+        <!-- link validators script js file -->
+        <script src="script/validators.js"></script>
+
+        <!-- link student script js file -->
+        <script src="script/studentscript.js"></script>
+    </head>
+    
+    <body>
+        <!-- nav bar creating -->
+        <nav class="navbar background-navbar">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggleMenuSideBar" aria-expanded="false" aria-controls="toggleMenuSideBar">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                <img src="../resources/images/transparentLogo.png" width="3%" height="2%" alt="" class="img-fluid logo-bar">
+                <a class="navbar-brand logo-bar" href="#">Profile</a>
+            </div>
+        </nav>
+
+        <div class="row">
+            <!-- side bar menu creating -->
+            <div class="col-2 side-menu mt-1" id="toggleMenuSideBar">
+                <a href="../Student Management/StudentPage.html">Student Management</a>
+            </div>
+
+
+            <!-- side bar component content -->
+            <div class="col-10">
+
+                <!-- CRUD oparations for Studant management -->
+                <div class="row mt-4">
+                    <div class="col-4"><button data-bs-toggle="modal" data-bs-target="#addStudentModal">Add Student Detailss</button></div>
+                    <div class="col-4"><button>Update Student Details</button></div>
+                    <div class="col-4"><button>Delete a Student</button></div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addStudentModal" data-bs-backdrop="static" data-bs-keyboard="false">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+                            <!-- header area that contein the topic and close button of modal -->
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add A Student</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <!-- body area that contain the content of the modal -->
+                            <div class="modal-body">
+                                <!-- creating a progressive bar -->
+                               <div class="row stepper">
+                                    <div class="col-3 stepper-ele">
+                                        <!-- creating progresive buttons  -->
+                                        <button type="button" class="btn btn-primary stepper-btn" id="firstStepperBtn" onclick="stepperShowHide(this.id)">1</button>
+                                        <!-- creating the line between buttons -->
+                                        <span class="stepper-line" id="firstStepperLine"></span>
+                                    </div>
+                                    <div class="col-3 stepper-ele">
+                                        <!-- creating progresive buttons  -->
+                                        <button type="button" class="btn btn-light stepper-btn" id="secondStepperBtn" onclick="stepperShowHide(this.id)">2</button>
+                                        <!-- creating the line between buttons -->
+                                        <span class="stepper-line" id="secondStepperLine"></span>
+                                    </div>
+                                    <div class="col-3 stepper-ele">
+                                        <button type="button" class="btn btn-light stepper-btn" id="thirdStepperBtn" onclick="stepperShowHide(this.id)">3</button>
+                                        <span class="stepper-line" id="thirdStepperLine"></span>
+                                    </div>
+                                    <div class="col-3 stepper-ele">
+                                        <button type="button" class="btn btn-light stepper-btn" id="fourthStepperBtn" onclick="stepperShowHide(this.id)">4</button>
+                                    </div>
+                               </div>
+
+                               <!-- creating the content of each button in progressive bar -->
+                               <div class="row">
+                                    <div class="col-1"></div>
+                                    <div class="col-10 stepper-content">
+
+                                        <!-- the content when click the 1st button in progressive bar -->
+                                        <div id="studentDetails">
+                                            <!-- progress 1 Name -->
+                                            <h4>Student Details</h4>
+
+                                            <!-- progress form started -->
+                                            <form action="" method="post">
+                                                <!-- first row of the form -->
+                                                <div class="row">
+                                                    <!-- middling the form -->
+                                                    <div class="col-1"></div>
+                                                    <div class="col-10">
+                                                        <!-- second row of the form -->
+                                                        <div class="row mt-2">
+                                                            <!-- defining what * is -->
+                                                            <div class="col-12 fw-bold text-end">
+                                                                <span class="text-danger"> * </span> Required
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- third row of the form -->
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <!-- full name input feild -->
+                                                                <label for="fullName" class="full-name-lable mt-3">Full Name <span class="inputCondition">(Every Name Should Have Start With a Capital Letter)</span> : <span class="text-danger"> * </span></label>
+                                                                <input type="text" class="form-control" id="fullName" placeholder="Enter Your Full Name"  onkeyup="inputFeildValidationAndCallingNameBinding(this , '^([A-Z][a-z]{1,20}[\\s])+([A-Z][a-z]{1,20})$')" required>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- forth row of the form -->
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <!-- Calling name input feild -->
+                                                                <label for="callingName" class="mt-3">Calling Name : <span class="text-danger"> * </span></label>
+                                                                <input type="text" class="form-control" onkeyup="calllingNameValidation(this)" id="callingName" placeholder="Enter Calling Name" list="callingNameOptions">
+
+                                                                <!-- suitable calling name suggesions -->
+                                                                <datalist id="callingNameOptions">
+                                                                </datalist>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <!-- Birthday Input Feild -->
+                                                                <label for="birthDay" class="mt-3">Birth Day : <span class="text-danger"> * </span></label>
+                                                                <input type="date" onblur="birtdayValidation(this)" name="birthDay" id="birthDay" class=" form-control birth-Date" placeholder="Birth Day" required>
+                                                            </div>
+
+                                                            <div class="col-4">
+                                                                <label for="birthDay" class="mt-3">Gender : <span class="text-danger"> * </span></label><br>
+                                                                <input type="radio" class="form-check-input mt-1" name="gender" id="genderMale" value="male">   <label for="genderMale">Male</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" class="form-check-input mt-1" name="gender" id="genderFemale" value="female"> <label for="genderFemale">Female</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- fifth row of the form -->
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <!-- subject multiselector -->
+                                                                <label for="subjects" class="mt-3">Subjects : <span class="text-danger"> * </span> <br> <span class="inputCondition">(Select Subjects You Want To Attend)</span> </label>
+                                                                <select name="subject" id="subject" class="form-select">
+                                                                    <option value="ict">ict</option>
+                                                                    <option value="maths">maths</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-4">
+                                                                <!-- grade selector -->
+                                                                <label for="grade" class="mt-3">Grade : <span class="text-danger"> * </span><br> <span class="inputCondition">(Select One Grade From Below)</span> </label>
+                                                                <select name="grade" id="grade" class="form-select">
+                                                                    <option value="" selected disabled>Select a Grade</option>
+                                                                    <option value="1">Grade 1</option>
+                                                                    <option value="1">Grade 2</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-4">
+                                                                <!-- contact number input feild -->
+                                                                <label for="contactNumber" class="mt-3">Contact Number :<br> <span class="inputCondition">(07&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215; or +947&#215;&#215;&#215;&#215;&#215;&#215;&#215;&#215; )</span> </label>
+                                                                <input type="text" onkeyup="inputFeildValidation(this, '^([0][7][01245678][0-9]{7})|([\\+][9][4][7][01245678][0-9]{7})$')" class="form-control" id="contactNumber" placeholder="Enter Contact Number">
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- sixth row of the form -->
+                                                        <div class="row">
+                                                            <!-- House No input feild -->
+                                                            <div class="col-3">
+                                                                <label for="houseNo" class="mt-3">House No : <span class="text-danger"> * </span></label>
+                                                                <input type="text" onkeyup="inputFeildValidation(this,'^[A-Za-z0-9\\s\\/\\-]{1,15}$')" class="form-control" id="houseNo" placeholder="Enter a House No" required>
+                                                            </div>
+
+                                                            <!-- Lane Name input feild -->
+                                                            <div class="col-3">
+                                                                <label for="laneName" class="mt-3">Lane Name :</label>
+                                                                <input type="text" class="form-control" id="laneName" placeholder="Enter the Lane Name" onkeyup="inputFeildValidation(this,'^([A-Z0-9][a-z0-9]{2,25}[\\s])+([A-Z][a-z]{1,20}[\\,])$')">
+                                                            </div>
+
+                                                            <!-- city input feild -->
+                                                            <div class="col-3">
+                                                                <label for="city" class="mt-3">City : <span class="text-danger"> * </span></label>
+                                                                <input type="text" onkeyup="inputFeildValidation(this,'^[A-Z][a-z]{1,15}$')" class="form-control" id="houseNo" placeholder="Enter a House No" required>
+                                                            </div>
+
+                                                            <!-- District input feild -->
+                                                            <div class="col-3">
+                                                                <label for="district" class="mt-3">District : <span class="text-danger"> * </span></label>
+                                                                <input type="text" onkeyup="inputFeildValidation(this,'^[A-Z][a-z]{1,15}$')" class="form-control" id="district" placeholder="Enter a District" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1"></div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <!-- the content when click the 2nd button in progressive bar -->
+                                        <div id="studentLoginDetails">
+                                            <h4>Student Login Details</h4>
+                                        </div>
+                                        
+                                        <!-- the content when click the 3rd button in progressive bar -->
+                                        <div id="parentsDetails">
+                                            <h4>Parents Details</h4>
+                                        </div>
+
+
+                                        <!-- the content when click the 4th button in progressive bar -->
+                                        <div id="studentIdCard">
+                                            <h4>Student Id Card</h4>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-1"></div>
+
+                               </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" onclick="stepperShowHide('secondStepperBtn')">Next</button>
+                                <button type="reset" class="btn btn-warning">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
+            </div>
+        </div>
+
+
+        
+        
+    </body>
+</html>

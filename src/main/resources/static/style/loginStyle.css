@@ -1,0 +1,68 @@
+.banner-img{
+    background-image: url(../images/loginBackgroundImage.png);
+    background-repeat: repeat;
+    height: 750px;
+    filter: blur(2px);
+    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.252);
+}
+
+.left-side{
+    background-image: linear-gradient(to right, rgb(0, 225, 255) , rgb(255, 0, 255));
+    width: 50%;
+    height: 600px;
+    margin-top: 80px;
+    margin-left: 20px;
+    border-radius: 100px;
+    box-shadow: 5px 00px 5px 5px rgba(0, 0, 0, 0.29);
+}
+
+.right-side{
+    background-image: linear-gradient(to right, rgb(0, 4, 255) , rgb(67, 165, 200));
+    width: 50%;
+    height: 600px;
+    margin-top: 80px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 100px;
+    box-shadow: 5px 00px 5px 5px rgba(0, 0, 0, 0.29);
+}
+
+.container{
+    display: flex;
+    position: absolute;
+    top: 1%;
+    left: 6%;
+}
+
+.login-content{
+    text-align: center;
+    color: aliceblue;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.user-name-text-feild{
+    background-color: transparent !important;
+    border-color: chartreuse !important;
+    border-radius: 20px !important;
+    color: aliceblue !important;
+
+}
+
+.user-name-text-feild::placeholder{
+    color: aliceblue;
+}
+
+.testing{
+    color: aliceblue;
+}
+
+.business-name{
+    color: aliceblue;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

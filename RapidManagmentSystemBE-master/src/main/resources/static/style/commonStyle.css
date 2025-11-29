@@ -1,0 +1,85 @@
+.background-navbar{
+    background-image: linear-gradient(to right, rgb(0, 225, 255) , rgb(255, 0, 255)) !important;
+    
+}
+
+.logo-bar{
+    justify-content: end !important;
+    color: aliceblue !important;
+}
+
+.side-menu{
+    background-image: linear-gradient(to bottom, rgb(67, 165, 200),rgb(0, 4, 255));
+    height: 670px;
+}
+
+.content_area{
+    display: flex;
+}
+
+.inputCondition{
+    color: rgba(0, 0, 0, 0.351);
+    font-size: smaller;
+}
+
+.stepper-ele {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stepper-btn {
+    border-radius: 200px;
+    border: 1px solid #0d6efd;
+    /* Optional: If you want to center the button text within the button element */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: absolute;
+}
+
+.stepper-line {
+    background-image: linear-gradient(to right, rgb(0, 225, 255) , rgb(255, 0, 255)) !important;
+    width: 200%;
+    height: 10px;
+    margin-left: 50%;
+    margin-right: -60%; /* Adjust this margin as needed */
+    z-index: 1;
+    border-radius: 30px;
+}
+
+.progressed-stepper-line{
+    background-image: linear-gradient(to right, rgb(30, 248, 41) , rgb(230, 222, 9)) !important;
+    width: 200%;
+    height: 10px;
+    margin-left: 50%;
+    margin-right: -60%; /* Adjust this margin as needed */
+    z-index: 1;
+    border-radius: 30px;
+}
+
+.stepper-content{
+    padding: 1%;
+    margin-top: 2%;
+    margin-right: 0px;
+    background-color: aliceblue;
+}
+
+/* .input-text-feilds{
+    height: 45px !important;
+    font-size: small;
+}
+
+.input-text-feilds::placeholder{
+    font-size: small !important;
+    text-align: center;
+}
+
+.full-name-lable{
+    font-size: small !important;
+    text-align: center;
+} */
+
+
+
