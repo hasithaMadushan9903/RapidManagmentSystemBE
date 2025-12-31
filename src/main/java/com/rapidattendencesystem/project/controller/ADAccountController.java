@@ -25,9 +25,11 @@ public class ADAccountController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @GetMapping("/updateprofilepicture/{profilePictureName}/{userCode}")
-    public ResponseEntity<ResponseDTO> updateProfilePicture(@PathVariable String profilePictureName, @PathVariable String userCode){
+    @PostMapping("/updateprofilepicture")
+    public ResponseEntity<ResponseDTO> updateProfilePicture(@RequestBody ImageUploadDTO imageUploadDTO){
         try {
+            String profilePictureName = imageUploadDTO.getUrl();
+            String userCode = imageUploadDTO.getUserCode();
             ADAccount rd = adAccountService.updateProfilePicture(profilePictureName, userCode);
             if(rd != null){
                 responseDTO.setCode("00");

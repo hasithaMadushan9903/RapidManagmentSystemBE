@@ -1,5 +1,7 @@
 package com.rapidattendencesystem.project.controller;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.rapidattendencesystem.project.dto.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/fileuploadctrl")
@@ -19,6 +22,9 @@ import java.nio.file.StandardCopyOption;
 public class FileUploadController {
 
     private static final String UPLOAD_DIR = "C:\\Users\\hasithadar\\Downloads\\RapidInstituteManagmentSystem-master\\Images\\ProfilePicture";
+
+    @Autowired
+    private Cloudinary cloudinary;
 
     @Autowired
     private ResponseDTO responseDTO;
@@ -33,28 +39,13 @@ public class FileUploadController {
 
                 return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
             }else{
-                File uploadDir = new File(UPLOAD_DIR);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdirs();
-                }
-
-                int index = 1;
-                String extension = getExtension(file.getOriginalFilename());
-                File destinationFile;
-
-                do {
-                    destinationFile = new File(UPLOAD_DIR, "image" + index + "." + extension);
-                    index++;
-                } while (destinationFile.exists());
-
-                Files.copy(file.getInputStream(), destinationFile.toPath());
-
-                String savedFileName = destinationFile.getName();
+                Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+                String fileUrl = uploadResult.get("url").toString();
 
                 responseDTO.setCode("00");
                 responseDTO.setMassage("Success");
-                responseDTO.setContent(savedFileName);
-                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
+                responseDTO.setContent(fileUrl);  // Save URL instead of local file name
+                return new ResponseEntity<>(responseDTO, HttpStatus.OK);
             }
         }catch (Exception e){
             responseDTO.setCode("02");
