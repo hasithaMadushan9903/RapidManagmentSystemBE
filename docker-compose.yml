@@ -1,30 +1,51 @@
 version: '3.8'
 
 services:
+  # -----------------
+  # SQL Server DB
+  # -----------------
   rapidmgmt-db:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mysql:8.0
     container_name: rapidmgmt-db
     environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=Sheno!@31
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: rapidsystem
     ports:
-      - "1433:1433"
+      - "3306:3306"
     volumes:
-      - mssql_data:/var/opt/mssql
+      - dbdata:/var/lib/mysql
 
+
+  # -----------------
+  # Backend (Spring Boot)
+  # -----------------
   rapidmgmt-be:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: rapidmgmt-be
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:sqlserver://rapidmgmt-db:1433;databaseName=RapidManagement
-      SPRING_DATASOURCE_USERNAME: sa
-      SPRING_DATASOURCE_PASSWORD: Sheno!@31
     ports:
       - "8080:8080"
     depends_on:
       - rapidmgmt-db
+    volumes:
+      - ../Images:/app/images    # <-- host Images folder mapped inside container
 
+  # -----------------
+  # Frontend (Angular)
+  # -----------------
+  rapidmgmt-fe:
+    build:
+      context: ../RapidInstituteManagmentSystem
+      dockerfile: Dockerfile
+    container_name: rapidmgmt-fe
+    ports:
+      - "4200:80"
+    depends_on:
+      - rapidmgmt-be
+
+# -----------------
+# Named volumes
+# -----------------
 volumes:
-  mssql_data:
+  dbdata:

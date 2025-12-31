@@ -1,9 +1,7 @@
 package com.rapidattendencesystem.project.controller;
 
-import com.rapidattendencesystem.project.dto.ADAccountDTO;
-import com.rapidattendencesystem.project.dto.FrontDeskAttendanceReportDTO;
-import com.rapidattendencesystem.project.dto.LoginDetailsDTO;
-import com.rapidattendencesystem.project.dto.ResponseDTO;
+import com.rapidattendencesystem.project.config.JwtUtil;
+import com.rapidattendencesystem.project.dto.*;
 import com.rapidattendencesystem.project.entity.ADAccount;
 import com.rapidattendencesystem.project.service.ADAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +21,9 @@ public class ADAccountController {
 
     @Autowired
     private ResponseDTO responseDTO;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @GetMapping("/updateprofilepicture/{profilePictureName}/{userCode}")
     public ResponseEntity<ResponseDTO> updateProfilePicture(@PathVariable String profilePictureName, @PathVariable String userCode){
@@ -127,23 +128,27 @@ public class ADAccountController {
     @PostMapping("/checklogin")
     public ResponseEntity<ResponseDTO> checklogin(@RequestBody ADAccountDTO adAccountDTO){
         try {
-            System.out.println(adAccountDTO);
             LoginDetailsDTO A1 = adAccountService.checkLogin(adAccountDTO);
-            System.out.println(A1);
+
             if(!(A1==null)){
+                System.out.println("aaa");
+                String token = jwtUtil.generateToken(A1.getUsercode());
+                LoginResponseDTO loginResponse = new LoginResponseDTO(token, A1);
                 responseDTO.setCode("00");
                 responseDTO.setMassage("Account Varified");
-                responseDTO.setContent(A1);
+                responseDTO.setContent(loginResponse );
                 return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
             }else{
+                System.out.println("bbb");
                 responseDTO.setCode("01");
                 responseDTO.setMassage("Error Occered");
                 responseDTO.setContent(adAccountDTO);
                 return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
             }
         }catch (Exception e){
+            System.out.println("ccc");
             responseDTO.setCode("02");
-            responseDTO.setMassage(e.getMessage());
+            responseDTO.setMassage("e.getMessage()");
             responseDTO.setContent(null);
             return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
