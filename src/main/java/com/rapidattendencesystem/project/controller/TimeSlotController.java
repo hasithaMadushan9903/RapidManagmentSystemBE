@@ -41,7 +41,7 @@ public class TimeSlotController {
                 responseDTO.setMassage("Not Found Any Records");
                 responseDTO.setContent(null);
 
-                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
             }
         }catch (Exception e){
             responseDTO.setCode("02");
