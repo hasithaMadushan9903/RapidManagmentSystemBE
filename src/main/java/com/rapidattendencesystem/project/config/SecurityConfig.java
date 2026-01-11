@@ -22,7 +22,18 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable) // disable CSRF
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/adaccountctrl/checklogin", "/authenticate").permitAll()
+                        .requestMatchers("/api/v1/adaccountctrl/checklogin",
+                                "/api/v1/gradectrl/getgrades",
+                                "/api/v1/parentctrl/getparentbyid/**",
+                                "/api/v1/studentctrl/addstudent",
+                                "/api/v1/enrolmentctrl/addEnrolment",
+                                "/api/v1/classfeectrl/addclassfee",
+                                "/api/v1/enrolmentcoursectrl/getenrolmentcourse",
+                                "/api/v1/monthctrl/getmonths",
+                                "/api/v1/rolectrl/getroles",
+                                "/api/v1/coursectrl/getcourses",
+                                "/api/v1/adaccountctrl/createuseraccount",
+                                "/authenticate").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
