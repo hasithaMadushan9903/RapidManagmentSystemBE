@@ -348,7 +348,7 @@ public class CourseController {
 				responseDTO.setCode("01");
 				responseDTO.setMassage("Courses Are Empty");
 				responseDTO.setContent(null);
-				return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			responseDTO.setCode("02");
