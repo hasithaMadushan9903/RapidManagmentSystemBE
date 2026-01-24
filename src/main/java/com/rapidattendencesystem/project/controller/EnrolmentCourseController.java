@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/enrolmentcoursectrl")
+@RequestMapping("api/v1/enrolcoursectrl")
 @CrossOrigin("*") //allow to access this controller from outside
 public class EnrolmentCourseController {
 
@@ -23,7 +23,7 @@ public class EnrolmentCourseController {
     @Autowired
     private EnrolmentCourseService enrolmentCourseService;
 
-    @GetMapping("/getenrolmentcourse")
+    @GetMapping("/getenrolcourse")
     public ResponseEntity<ResponseDTO> getEnrolments(){
         try {
             List<EnrolmentCourseDTO> res = enrolmentCourseService.getEnrolmentCourse();

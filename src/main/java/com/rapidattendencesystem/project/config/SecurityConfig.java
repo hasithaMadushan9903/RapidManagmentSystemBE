@@ -3,6 +3,7 @@ package com.rapidattendencesystem.project.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,9 +29,9 @@ public class SecurityConfig {
                                 "/api/v1/studentctrl/addstudent",
                                 "/api/v1/enrolmentctrl/addEnrolment",
                                 "/api/v1/classfeectrl/addclassfee",
-                                "/api/v1/enrolmentcoursectrl/getenrolmentcourse",
                                 "/api/v1/monthctrl/getmonths",
                                 "/api/v1/rolectrl/getroles",
+                                "/api/v1/enrolcoursectrl/getenrolcourse",
                                 "/api/v1/coursectrl/getcourses",
                                 "/api/v1/adaccountctrl/createuseraccount",
                                 "/authenticate").permitAll()
