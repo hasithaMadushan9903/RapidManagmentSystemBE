@@ -97,7 +97,7 @@ public class StudentContoller {
 				responseDTO.setCode("01");
 				responseDTO.setMassage("Error Occered");
 				responseDTO.setContent(studentDTO);
-				return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			responseDTO.setCode("02");
@@ -120,7 +120,7 @@ public class StudentContoller {
 				responseDTO.setCode("01");
 				responseDTO.setMassage("Sudents are empty");
 				responseDTO.setContent(null);
-				return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			responseDTO.setCode("02");

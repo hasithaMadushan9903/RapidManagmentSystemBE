@@ -57,7 +57,7 @@ public class AttendanceController {
                 responseDTO.setCode("01");
                 responseDTO.setMassage("Bad Request");
                 responseDTO.setContent(null);
-                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
             }
         }catch (Exception e){
             responseDTO.setCode("01");
@@ -149,7 +149,7 @@ public class AttendanceController {
                 responseDTO.setCode("01");
                 responseDTO.setMassage("Bad Request");
                 responseDTO.setContent(attendanceDTOS);
-                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
             }
         }catch (Exception e){
             responseDTO.setCode("01");
@@ -172,7 +172,7 @@ public class AttendanceController {
                 responseDTO.setCode("01");
                 responseDTO.setMassage("Bad Request");
                 responseDTO.setContent(null);
-                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
             }
         }catch (Exception e){
             responseDTO.setCode("01");
@@ -195,7 +195,7 @@ public class AttendanceController {
                 responseDTO.setCode("01");
                 responseDTO.setMassage("Bad Request");
                 responseDTO.setContent(attendanceDTOS);
-                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
             }
         }catch (Exception e){
             responseDTO.setCode("01");
