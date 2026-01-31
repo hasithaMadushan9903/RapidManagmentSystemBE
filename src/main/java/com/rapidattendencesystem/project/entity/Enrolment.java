@@ -3,6 +3,7 @@ package com.rapidattendencesystem.project.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +30,8 @@ public class Enrolment {
 	private int id;
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Student student;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "enrolment",cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<EnrolmentCourse> enrolmentCourses;
 	
