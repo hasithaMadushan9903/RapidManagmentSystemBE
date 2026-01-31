@@ -20,5 +20,5 @@ public interface StudentRepo extends JpaRepository<Student, Integer> {
     List<Student> findAllByTeacherId(@Param("teacherId") int teacherId,@Param("isActive") Boolean isActive);
 
     @Query("SELECT s.email FROM Student s JOIN s.enrolment e JOIN e.enrolmentCourses ec JOIN ec.course c WHERE c.teacher.id = :teacherId")
-    List<String> findEmailsByTeacherId(@Param("teacherId") int teacherId);
+    List<String> findEmailsByTeacherId(@Param("teacherId") int teacherId); 
 }
