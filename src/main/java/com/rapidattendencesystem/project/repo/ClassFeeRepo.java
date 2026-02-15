@@ -22,4 +22,9 @@ public interface ClassFeeRepo extends JpaRepository<ClassFee, Integer> {
     @Query("SELECT cfc.month FROM ClassFee cf JOIN cf.classFeeCourse cfc WHERE cf.student = :student AND cf.isActive = :isActive AND cfc.course = :course ORDER BY cfc.month ASC")
     List<Month> findTop1MonthByStudentAndCourseOrderByMonthAsc(@Param("student") Student student, @Param("course") Course course, @Param("isActive") Boolean isActive);
 
+    @Query(
+            value = "SELECT recipt_number FROM class_fee ORDER BY id DESC LIMIT 1",
+            nativeQuery = true
+    )
+    Optional<String> findTop1ReciptNumberOrderById();
 }

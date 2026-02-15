@@ -119,6 +119,15 @@ public class ClassFeeService {
 		}
 	}
 
+	public Optional<String> findTop1ReciptNumberOrderById(){
+		try{
+			return classFeeRepo.findTop1ReciptNumberOrderById();
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+
 	public Optional<ClassFee> findLastByStudentAndCourse(StudentCourseDTO studentCourseDTO){
 		try{
 			Course c1 = modelMapper.map(studentCourseDTO.getCourse() , Course.class);

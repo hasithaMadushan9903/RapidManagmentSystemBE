@@ -170,4 +170,27 @@ public class ClassFeeController {
 			return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
+	@GetMapping("/getLastreciptnumber")
+	public ResponseEntity<ResponseDTO> getLastreciptnumber(){
+		try{
+			Optional<String> recipt = classFeeService.findTop1ReciptNumberOrderById();
+			if(recipt.isPresent()){
+				responseDTO.setCode("00");
+				responseDTO.setMassage("Succuss");
+				responseDTO.setContent(recipt);
+				return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
+			}else{
+				responseDTO.setCode("01");
+				responseDTO.setMassage("No Recipts");
+				responseDTO.setContent(null);
+				return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.BAD_REQUEST);
+			}
+		}catch (Exception e){
+			responseDTO.setCode("02");
+			responseDTO.setMassage(e.getMessage());
+			responseDTO.setContent(null);
+			return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }
