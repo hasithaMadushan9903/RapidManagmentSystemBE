@@ -18,13 +18,7 @@ import com.rapidattendencesystem.project.service.StudentsService;
 @RequestMapping("api/v1/studentctrl")
 @CrossOrigin("*") //allow to access this controller from outside
 public class StudentContoller {
-	
-//	@GetMapping("/students")
-//	public ModelAndView studentUI() {
-//		ModelAndView modelAndVeiwObj = new ModelAndView();
-//		modelAndVeiwObj.setViewName("modelAndVeiwObj");
-//		return modelAndVeiwObj
-//	}
+
 	@Autowired
 	private StudentsService studentService;
 	
