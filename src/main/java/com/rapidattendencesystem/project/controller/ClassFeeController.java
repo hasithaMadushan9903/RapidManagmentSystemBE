@@ -181,10 +181,11 @@ public class ClassFeeController {
 				responseDTO.setContent(recipt);
 				return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
 			}else{
+				recipt = Optional.of("R0000");
 				responseDTO.setCode("01");
 				responseDTO.setMassage("No Recipts");
-				responseDTO.setContent(null);
-				return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.BAD_REQUEST);
+				responseDTO.setContent(recipt);
+				return new ResponseEntity<ResponseDTO>(responseDTO , HttpStatus.OK);
 			}
 		}catch (Exception e){
 			responseDTO.setCode("02");
