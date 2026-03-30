@@ -15,6 +15,7 @@ import com.google.api.services.drive.DriveScopes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
@@ -29,7 +30,8 @@ public class GoogleDriveConfig {
     @Bean
     public Drive googleDrive() throws Exception {
 
-        InputStream in = getClass().getClassLoader().getResourceAsStream("credentials.json");
+//        InputStream in = getClass().getClassLoader().getResourceAsStream("credentials.json");
+        InputStream in = new FileInputStream("credentials.json");
 
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
